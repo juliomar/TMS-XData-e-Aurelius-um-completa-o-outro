@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{981C7107-0D1E-4EB4-85B5-534E51C93A18}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TMS_XData_Aurelius.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project1.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TMS_XData_Aurelius">
+        <MSBuild Projects="TMS_XData_Aurelius.dproj"/>
+    </Target>
+    <Target Name="TMS_XData_Aurelius:Clean">
+        <MSBuild Projects="TMS_XData_Aurelius.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TMS_XData_Aurelius:Make">
+        <MSBuild Projects="TMS_XData_Aurelius.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project1">
+        <MSBuild Projects="Project1.dproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="Project1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="Project1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TMS_XData_Aurelius;Project1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TMS_XData_Aurelius:Clean;Project1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TMS_XData_Aurelius:Make;Project1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
